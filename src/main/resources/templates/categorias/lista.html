@@ -8,6 +8,10 @@
 </head>
 <body>
 <h1>Categorias da biblioteca</h1>
+<p class="barra">
+    <a class="botao" th:href="@{/categorias/nova}">Nova categoria</a>
+</p>
+
 
 <table>
     <caption>Categorias cadastradas no BiblioTec</caption>
@@ -17,6 +21,7 @@
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
             <th scope="col">Descrição</th>
+            <th scope="col">Ações</th>
         </tr>
     </thead>
 
@@ -25,6 +30,7 @@
             <td th:text="${categoria.id}">1</td>
             <td th:text="${categoria.nome}">Nome de exemplo</td>
             <td th:text="${categoria.descricao}">Descrição de exemplo</td>
+            <td>Excluir e editar</td>
         </tr>
     </tbody>
 </table>

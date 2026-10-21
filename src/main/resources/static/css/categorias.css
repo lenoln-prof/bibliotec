@@ -71,3 +71,41 @@ tbody td:nth-child(2) { font-weight: bold; color: var(--verde); }
     h1 { font-size: 1.4rem; }
     thead th, tbody td { padding: .6rem .5rem; font-size: .9rem; }
 }
+
+.barra { width: min(920px, 92%); margin: 0 auto 1rem; }
+
+.botao {
+    display: inline-block;
+    padding: .55rem 1.1rem;
+    font: inherit;
+    color: var(--papel);
+    background: var(--verde);
+    border: 2px solid var(--madeira);
+    text-decoration: none;
+    cursor: pointer;
+}
+.botao:hover { background: var(--verde-claro); }
+.botao-secundario { color: var(--verde); background: var(--papel-escuro); }
+
+.formulario {
+    width: min(520px, 92%);
+    margin: 0 auto 3rem;
+    padding: 1.5rem;
+    background: #fffaf0;
+    border: 3px solid var(--madeira);
+    box-shadow: 6px 6px 0 rgba(107,68,35,.25);
+}
+.formulario label {
+    display: block;
+    margin: .8rem 0 .3rem;
+    font-weight: bold;
+    color: var(--verde);
+}
+.formulario input[type=text] {
+    width: 100%;
+    padding: .55rem;
+    font: inherit;
+    border: 2px solid var(--madeira);
+    background: #fff;
+}
+div.acoes { display: flex; gap: .6rem; margin-top: 1.2rem; }
