@@ -2,8 +2,10 @@ package br.escola.bibliotec.controller.web;
 
 import br.escola.bibliotec.model.Categoria;
 import br.escola.bibliotec.service.CategoriaService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,8 +34,12 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public String salvar(@ModelAttribute Categoria categoria,
+    public String salvar(@Valid @ModelAttribute("categoria") Categoria categoria,
+                         BindingResult resultado,
                          RedirectAttributes redirectAttributes) {
+        if (resultado.hasErrors()) {
+            return "categorias/form";
+        }
         categoriaService.salvar(categoria);
         redirectAttributes.addFlashAttribute("mensagem", "Categoria salva com sucesso!");
         return "redirect:/categorias";

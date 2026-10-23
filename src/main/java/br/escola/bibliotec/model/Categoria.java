@@ -2,6 +2,7 @@ package br.escola.bibliotec.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "categoria")
@@ -12,8 +13,10 @@ public class Categoria {
 
     @Column(nullable = false, unique = true, length = 60)
     @NotBlank(message = "Nome é obrigatório")
+    @Size(max = 60, message = "O nome deve ter no máximo 60 caracteres")
     private String nome;
 
+    @Size(max = 255, message = "A descrição deve ter no máximo 255 caracteres")
     private String descricao;
 
     public Long getId() {
