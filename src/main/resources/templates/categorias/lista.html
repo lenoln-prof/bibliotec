@@ -12,7 +12,7 @@
     <a class="botao" th:href="@{/categorias/nova}">Nova categoria</a>
 </p>
 
-
+<p class="mensagem" th:if="${mensagem}" th:text="${mensagem}">Mensagem</p>
 <table>
     <caption>Categorias cadastradas no BiblioTec</caption>
 

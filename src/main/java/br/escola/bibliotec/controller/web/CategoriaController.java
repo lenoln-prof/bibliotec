@@ -5,6 +5,7 @@ import br.escola.bibliotec.service.CategoriaService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
@@ -31,10 +32,13 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public String salvar(@ModelAttribute Categoria categoria) {
+    public String salvar(@ModelAttribute Categoria categoria,
+                         RedirectAttributes redirectAttributes) {
         categoriaService.salvar(categoria);
+        redirectAttributes.addFlashAttribute("mensagem", "Categoria salva com sucesso!");
         return "redirect:/categorias";
     }
+
 
     @GetMapping("/{id}/editar")
     public String editar(@PathVariable Long id, Model model) {
@@ -47,10 +51,11 @@ public class CategoriaController {
     }
 
     @PostMapping("/{id}/excluir")
-    public String excluir(@PathVariable Long id){
+    public String excluir(@PathVariable Long id,
+                          RedirectAttributes redirectAttributes){
         categoriaService.excluir(id);
+        redirectAttributes.addFlashAttribute("mensagem", "Categoria excluída com sucesso!");
         return  "redirect:/categorias";
     }
-
 
 }
