@@ -8,11 +8,11 @@
           href="../../static/css/categorias.css">
 </head>
 <body>
-<h1>Nova categoria</h1>
+<h1 th:text="${categoria.id == null ? 'Nova categoria' : 'Editar categoria'}">Nova categoria</h1>
 
 <form class="formulario" th:action="@{/categorias}"
       th:object="${categoria}" method="post">
-
+    <input type="hidden" th:field="*{id}">
     <label for="nome">Nome</label>
     <input type="text" id="nome" name="nome" th:field="*{nome}" maxlength="60" required>
 

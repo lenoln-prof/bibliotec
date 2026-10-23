@@ -30,7 +30,9 @@
             <td th:text="${categoria.id}">1</td>
             <td th:text="${categoria.nome}">Nome de exemplo</td>
             <td th:text="${categoria.descricao}">Descrição de exemplo</td>
-            <td>Excluir e editar</td>
+            <td class="acoes">
+                <a class="botao botao-pequeno" th:href="@{/categorias/{id}/editar(id=${categoria.id})}">Editar</a>
+            </td>
         </tr>
     </tbody>
 </table>

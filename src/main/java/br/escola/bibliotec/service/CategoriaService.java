@@ -5,6 +5,7 @@ import br.escola.bibliotec.repository.CategoriaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoriaService {
@@ -19,9 +20,11 @@ public class CategoriaService {
         return categoriaRepository.findAllByOrderByNomeAsc();
     }
 
-    public Categoria salvar(Categoria categoria) {
-        return categoriaRepository.save(categoria);
+    public void salvar(Categoria categoria) {
+        categoriaRepository.save(categoria);
     }
 
-
+    public Optional<Categoria> buscarPorId(Long id) {
+        return categoriaRepository.findById(id);
+    }
 }
