@@ -37,6 +37,10 @@ public class CategoriaController {
     public String salvar(@Valid @ModelAttribute("categoria") Categoria categoria,
                          BindingResult resultado,
                          RedirectAttributes redirectAttributes) {
+        if (categoriaService.nomeJaExiste(categoria)){
+            resultado.rejectValue("nome", "nome.duplicado", "Categoria já existe.");
+            return "categorias/form";
+        }
         if (resultado.hasErrors()) {
             return "categorias/form";
         }

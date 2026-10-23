@@ -21,6 +21,7 @@ public class CategoriaService {
     }
 
     public void salvar(Categoria categoria) {
+        categoria.setNome(categoria.getNome().trim());
         categoriaRepository.save(categoria);
     }
 
@@ -30,5 +31,16 @@ public class CategoriaService {
 
     public void excluir(Long id) {
         categoriaRepository.deleteById(id);
+    }
+
+    public boolean nomeJaExiste(Categoria categoria) {
+        var nome = categoria.getNome();
+        if (nome == null || nome.trim().isEmpty()) {
+            return false;
+        }
+
+        return categoriaRepository.findByNomeIgnoreCase(nome).filter(
+                existe -> !existe.getId().equals(categoria.getId())
+                ).isPresent();
     }
 }
