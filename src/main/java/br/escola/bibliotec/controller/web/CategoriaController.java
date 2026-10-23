@@ -46,5 +46,11 @@ public class CategoriaController {
         return "categorias/form";
     }
 
+    @PostMapping("/{id}/excluir")
+    public String excluir(@PathVariable Long id){
+        categoriaService.excluir(id);
+        return  "redirect:/categorias";
+    }
+
 
 }

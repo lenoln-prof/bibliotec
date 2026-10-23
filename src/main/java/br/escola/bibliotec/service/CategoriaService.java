@@ -27,4 +27,8 @@ public class CategoriaService {
     public Optional<Categoria> buscarPorId(Long id) {
         return categoriaRepository.findById(id);
     }
+
+    public void excluir(Long id) {
+        categoriaRepository.deleteById(id);
+    }
 }

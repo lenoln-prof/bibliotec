@@ -32,9 +32,26 @@
             <td th:text="${categoria.descricao}">Descrição de exemplo</td>
             <td class="acoes">
                 <a class="botao botao-pequeno" th:href="@{/categorias/{id}/editar(id=${categoria.id})}">Editar</a>
+                <form class="excluir" method="post"
+                      th:action="@{/categorias/{id}/excluir(id=${categoria.id})}"
+                      th:data-nome="${categoria.nome}">
+                    <button type="submit" class="botao botao-pequeno botao-perigo">
+                        Excluir
+                    </button>
+                </form>
             </td>
         </tr>
     </tbody>
 </table>
+<script>
+    document.querySelectorAll('form.excluir').forEach(function (formulario) {
+        formulario.addEventListener('submit', function (evento) {
+            var nome = formulario.dataset.nome;
+            if (!confirm('Excluir a categoria "' + nome + '"?')) {
+                evento.preventDefault();
+            }
+        });
+    });
+</script>
 </body>
 </html>
