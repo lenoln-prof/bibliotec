@@ -44,8 +44,11 @@ public class CategoriaController {
         if (resultado.hasErrors()) {
             return "categorias/form";
         }
+
+        var mensagem = categoria.getId() == null ? "Categoria salva com sucesso!" : "Categoria atualizada com sucesso!";
+
         categoriaService.salvar(categoria);
-        redirectAttributes.addFlashAttribute("mensagem", "Categoria salva com sucesso!");
+        redirectAttributes.addFlashAttribute("mensagem", mensagem);
         return "redirect:/categorias";
     }
 
