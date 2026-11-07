@@ -12,12 +12,18 @@
 
 <form class="formulario" th:action="@{/categorias}"
       th:object="${categoria}" method="post">
+    <div th:if="${#fields.hasAnyErrors()}">
+        <ul style="margin-left: -20px;" >
+            <li class="erro" th:each="erro : ${#fields.allErrors()}" th:text="${erro}"></li>
+        </ul>
+    </div>
     <input type="hidden" th:field="*{id}">
+
     <label for="nome">Nome</label>
-    <input type="text" id="nome" name="nome" th:field="*{nome}" maxlength="60" required>
+    <input type="text" id="nome" name="nome" th:field="*{nome}" th:errorclass="campo-erro">
 
     <label for="descricao">Descrição</label>
-    <input type="text" id="descricao" name="descricao" th:field="*{descricao}">
+    <input type="text" id="descricao" name="descricao" th:field="*{descricao}" th:errorclass="campo-erro">
 
     <div class="acoes">
         <button type="submit" class="botao">Salvar</button>
